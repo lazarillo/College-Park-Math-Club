@@ -313,25 +313,15 @@ sup {
 
 <body>
 
-<hr>
+<!-- Mike Williamson -->
 
-<p>title: &quot;Math Club - Logic&quot;
-author: &quot;Mike Williamson&quot;
-date: &quot;December, 2016&quot;
-output:
-  html<em>document:
-    number</em>sections: yes
-    toc: yes
-    toc<em>depth: 2
-  pdf</em>document:
-    toc: yes
-  word_document: default</p>
+<!-- 2016 -->
 
-<h2 id="toc_0">fontsize: 12pt</h2>
+<h1 id="toc_0">Propositional Logic</h1>
 
-<div><pre><code class="language-{r">library(ggplot2)</code></pre></div>
+<p>Here are some notes for the parents, mostly.  You can go through it with your kids if you&#39;d like, but I&#39;m trying to keep the math club fun &amp; &quot;light&quot;.</p>
 
-<h1 id="toc_1">Quick Overview</h1>
+<h2 id="toc_1">Quick Overview</h2>
 
 <p>Here we will work with <a href="https://en.wikipedia.org/wiki/Propositional_calculus"><em>Propositional Logic</em></a> (also called Propositional Calculus) and <a href="https://en.wikipedia.org/wiki/Predicate_logic"><em>Predicate Logic</em></a> (also called First-Order Logic or Predicate Calculus).</p>
 
@@ -341,16 +331,20 @@ output:
 <p>Propositional Logic v. Predicate Logic: propositional logic studies &quot;plain&quot; statements focusing on particular truths, while predicate logic includes quantifiers and variables.</p>
 </blockquote>
 
-<p>Well, yeah, that&#39;s great, but *<strong>what does that mean??</strong> The following is a somewhat tenuous analogy, but think of propositional logic as $3 + 4 = 7$ (True) or $5 + 2 = 11$ (False), and predicate logic as $x + 7 = 14$ (True when $x = 7$) or $x + 3 \times y = 22$ (True for certain combinations of $x$ &amp; $y$).</p>
+<p>Well, yeah, that&#39;s great, but *<strong>what does that mean??</strong></p>
 
-<hr>
+<p>The following is a somewhat tenuous analogy, but think of propositional logic as <em>3 + 4 = 7</em> (True) or <em>5 + 2 = 11</em> (False), and predicate logic as <em>x + 7 = 14</em> (True when <em>x = 7</em>) or <em>x + 3 * y = 22</em> (True for certain combinations of <em>x</em> &amp; <em>y</em>).</p>
+
+<p>Lastly, propositional logic is not solely the purview of numbers. We&#39;ll mostly work with sentences.</p>
 
 <h2 id="toc_2">Examples of Propositional and Predicate Logic</h2>
 
 <p>But examples work best:</p>
 
+<h3 id="toc_3">Propositional Logic</h3>
+
 <blockquote>
-<p>Propositional Logic:  &quot;Sparks is a dog and he can fly.&quot;</p>
+<p>&quot;Sparks is a dog and he can fly.&quot;</p>
 </blockquote>
 
 <p>Some things to note:</p>
@@ -364,10 +358,10 @@ output:
 </ul></li>
 </ul>
 
-<hr>
+<h3 id="toc_4">Predicate Logic</h3>
 
 <blockquote>
-<p>Predicate Logic: &quot;Someone likes fruitcake.&quot;</p>
+<p>&quot;Someone likes fruitcake.&quot;</p>
 </blockquote>
 
 <p>Some things to note:</p>
@@ -393,13 +387,16 @@ output:
 
 <p>Here there is no variable, but we still have the quantifier <em>all</em>.  This becomes important when we want to look at negations, which we&#39;ll discuss later.</p>
 
-<p>We will talk in more detail on this topic later, but since we will <em>not cover probabilities or likelihoods</em>, there are only 4 types of quantifiers:
- - some (or &quot;at least one&quot;): this means there is at least 1 case that is true
- - all: all cases are true
- - not all (&quot;at least one is not&quot;): this means there is at least 1 case that is not true
- - none (or &quot;all are not&quot;): no cases are true</p>
+<p>We will talk in more detail on this topic later, but since we will <em>not cover probabilities or likelihoods</em>, there are only 4 types of quantifiers:</p>
 
-<h2 id="toc_3">Further details into Predicate Logic examples</h2>
+<ul>
+<li>some (or &quot;at least one&quot;): this means there is at least 1 case that is true</li>
+<li>all: all cases are true</li>
+<li>not all (&quot;at least one is not&quot;): this means there is at least 1 case that is not true</li>
+<li>none (or &quot;all are not&quot;): no cases are true</li>
+</ul>
+
+<h3 id="toc_5">Further details into Predicate Logic examples</h3>
 
 <p>Some examples to help understand these differences in the context of logic:</p>
 
@@ -415,13 +412,316 @@ output:
 
 <p><strong>Notice:  this is different from saying &quot;Everyone dislikes fruitcake&quot;.  Why??  Dislike is the <em>opposite</em> of like, but it is not the <em>negation</em> of like</strong>.  There may be people who like fruitcake, dislike fruitcake, who don&#39;t care one way or the other, who love it, hate it, etc.</p>
 
-<p>Using logic similar to above, &quot;no one likes fruitcake&quot; is likely <strong><em>true</em></strong>.  Humor me to let me move on without really proving that in any way.</p>
+<p>Using logic similar to above, &quot;no one likes fruitcake&quot; is likely <strong><em>true</em></strong>.  Or, so say comedians who&#39;ve run out of better jokes.</p>
 
-<h1 id="toc_4">Propositional Logic</h1>
+<h2 id="toc_6">Propositional Logic Statements</h2>
 
-<h1 id="toc_5">Stuff to add at some point</h1>
+<p>Propositional Logic involves the process of taking given truths, and validating (or invalidating) other statements using these given truths.  Therefore, we can only work with concepts where <em>true</em> and <em>false</em> even make sense.</p>
 
-<p>I want to include this link to <a href="https://en.wikipedia.org/wiki/Definite_description">definite descriptors</a> and this link to a <a href="http://somerby.net/mack/logic/">logic calculator</a> and this link to <a href="https://en.wikipedia.org/wiki/First-order_logic">predicate logic</a>.</p>
+<p>In language, <strong>statements</strong> are sentences which are either true or false.  Here are some example statements:</p>
+
+<ul>
+<li>Paris is the capital of France.</li>
+<li>I have two brothers.</li>
+<li>There is lost treasure hidden in College Park.</li>
+</ul>
+
+<p>Note that the statements do <em>not need to be</em> true, they simply need to be either true or false.</p>
+
+<p>But shouldn&#39;t any sentence be either true or false?  Nope!  Here are some sentences which are not statements:</p>
+
+<ul>
+<li>Beyonce is an amazing musician. (opinion)</li>
+<li>What time will we eat dinner? (question)</li>
+<li>Hand me that pencil, please. (command)</li>
+</ul>
+
+<h2 id="toc_7">Statement Negations</h2>
+
+<p>The <em>negation</em> of a statement is <strong><em>not</em></strong> the opposite of the statement, at least not in rigorous logical terms.</p>
+
+<p>Instead, the <em>negation</em> of a statement is the complementary statement which captures &quot;everything else in the world&quot;.</p>
+
+<p>Again, it&#39;s always best to work with examples:</p>
+
+<h3 id="toc_8">Statement:</h3>
+
+<blockquote>
+<p>Harry is tall.</p>
+</blockquote>
+
+<h3 id="toc_9">Opposite:</h3>
+
+<blockquote>
+<p>Harry is short.</p>
+</blockquote>
+
+<h3 id="toc_10"><strong><em>True negation</em></strong>:</h3>
+
+<blockquote>
+<p>Harry is not tall.</p>
+</blockquote>
+
+<p>Big deal, you say, right?</p>
+
+<p>There is actually a <strong>huge</strong> conceptual difference between the negation of a statement and the opposite of the statement.</p>
+
+<p>Let&#39;s imagine the <strong>entire world</strong> in our heads for a moment.  No, let&#39;s imagine the <strong>entire universe</strong>.  There are only 2 possibilities within that universe:  either Harry <em>is</em> tall, or Harry is <em>not</em> tall.  There is no other version of the universe.</p>
+
+<p>What do I mean by that?  I mean that <strong><em>if</em></strong> &quot;Harry is tall&quot; is true, then &quot;Harry is not tall&quot; <strong><em>must be false</em></strong>.  There is no other option.  However, if I instead used &quot;Harry is short&quot;, then they could both be false.  (Maybe Harry is average size, or maybe tiny, or whatever.)</p>
+
+<h2 id="toc_11">Compound Statements: &quot;And&quot;</h2>
+
+<p>For those of you who do some computer programming, that &quot;negation&quot; concept probably seems familiar.  Here&#39;s another one, compound statements.</p>
+
+<p>We&#39;ll look here at combining statements using <em>and</em>, starting with some examples.</p>
+
+<blockquote>
+<p>Paris is the capital of France and it is the most populous city in the world.</p>
+</blockquote>
+
+<p>This is a statement.  <strong>The statement is false</strong>.  But why is this statement false?  Because <strong><em>at least one of the statements is false</em></strong>.</p>
+
+<p>When combining statements via a compound statement using &quot;and&quot;, for the combined statement to be true, both parts of it have to be true.</p>
+
+<p>To sound fancy, in propositional logic, this <em>and</em> is referred to as a &quot;<strong><em>conjunction</em></strong>&quot;.</p>
+
+<h2 id="toc_12">Compound Statements: &quot;Or&quot;</h2>
+
+<p>Again, jumping straight into an example:</p>
+
+<blockquote>
+<p>Paris is the capital of France or it is the most populous city in the world.</p>
+</blockquote>
+
+<p>This is a true statement, unlike above.  This is because a compound statement created using <em>or</em> only requires <strong>one</strong> of the portions of the compound statement to be true.</p>
+
+<p>However, the logical <em>or</em> works slightly differently from the &quot;or&quot; that we use in normal speaking language.  For instance, the statement</p>
+
+<blockquote>
+<p>You can eat dessert or stay up late.</p>
+</blockquote>
+
+<p>is interpreted in colloquial English to mean that you can either eat dessert or you can stay up late, <strong><em>but you cannot do both</em></strong>.</p>
+
+<p>This is <strong>not how logical <em>or</em> works</strong>!  The logical or means either or both of the statements can be true in order for the statement to be true.</p>
+
+<p>To sound fancy, in propositional logic, this <em>or</em> is referred to as a &quot;<strong><em>disjunction</em></strong>&quot;.</p>
+
+<p>(There is another logical gadgetry called an <em>xor</em>, for &quot;eXclusive OR&quot;, which works the way we normally intend within colloquial English.)</p>
+
+<h2 id="toc_13">Symbolic Logic</h2>
+
+<p>Earlier we saw an example of a generalized logic concept, the negation. After that, the <em>or</em> and <em>and</em>, defined in tight logical terms. There are several others that we&#39;ll be exposed to, enough that we want to set up some symbols so that it becomes easier to understand what we&#39;re working with.</p>
+
+<p>Again, it&#39;s easiest to look via example. Let&#39;s take a few statements:</p>
+
+<blockquote>
+<p>Pink is a mixture between white and red.</p>
+
+<p>My dog can fly.</p>
+
+<p>My cat is small.</p>
+</blockquote>
+
+<p>I can start combining these statements, or negating them, to make statements with different meaning, and different &quot;<a href="http://www.cc.com/video-clips/63ite2/the-colbert-report-the-word---truthiness">truthiness</a>&quot;.</p>
+
+<p>For instance:</p>
+
+<blockquote>
+<p>My dog can fly, or pink is a mixture between white and red.</p>
+
+<p>Pink is not a mixture between white and red, and my cat is small.</p>
+</blockquote>
+
+<p>But even with these fairly simple examples, it becomes fairly laborious to combine the statements.  More importantly, in more complex cases, it&#39;s unclear what, for instance, is the right way to negate a sentence.</p>
+
+<p>So we should introduce some symbols to simplify things, and more importantly, to ensure consistency.</p>
+
+<p>Let&#39;s revisit our original sentences:</p>
+
+<blockquote>
+<p>Pink is a mixture between white and red. (p)</p>
+
+<p>My dog can fly. (d)</p>
+
+<p>My cat is small. (c)</p>
+</blockquote>
+
+<p>After each sentence, I provided a letter, which will act as the shorthand for the statement.</p>
+
+<p>We also need to introduce some symbols to represent these logical terms we&#39;ve introduced:</p>
+
+<ul>
+<li>not: <em>~</em></li>
+<li>and: <em>&#8743;</em></li>
+<li>or: <em>&#8744;</em></li>
+</ul>
+
+<p>So, I can write something like</p>
+
+<blockquote>
+<p>d &#8744; p</p>
+
+<p>~p &#8743; c</p>
+</blockquote>
+
+<p>The nice thing about using these symbols, is that guaranteed truths, or <em>tautologies</em> become much easier to spot:</p>
+
+<p>The statement</p>
+
+<blockquote>
+<p>~g &#8744; g</p>
+</blockquote>
+
+<p><strong><em>must</em></strong> be true, regardless of what &quot;g&quot; actually stands for.</p>
+
+<p>Similarly, the statement</p>
+
+<blockquote>
+<p>~g &#8743; g</p>
+</blockquote>
+
+<p><strong><em>must</em></strong> be false, regardless of what &quot;g&quot; actually stands for.</p>
+
+<h2 id="toc_14">Truth Tables</h2>
+
+<p>That brings us up to our last concept for this lesson: truth tables.</p>
+
+<p>We started by saying that statements are sentences which can either be true or false.  We then mentioned that a statement&#39;s <em>negation</em> will be true whenever the original statement is false, or vice-versa.  Then we introduced compound statements using <em>and</em> and <em>or</em>, which impacts whether the statement is true.</p>
+
+<p>Let&#39;s look at all of these relationships, using what are called truth tables.</p>
+
+<p>First, let&#39;s take our generic statement, whichever statement you&#39;d like, and call that statement &quot;<em>p</em>&quot;.  And let&#39;s call a different generic statement &quot;<em>q</em>&quot;.  Here are our tables, so far:</p>
+
+<h3 id="toc_15">Negation</h3>
+
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>~p</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+
+<p>Let&#39;s break down what&#39;s happening with this simple table:</p>
+
+<ul>
+<li>The first row lists <strong>all</strong> of the statement permutations.  Since we&#39;re simply looking at a statement and its negation, we just have those two.</li>
+<li>Then along all of the original statements, we write out all of their possibilities.
+
+<ul>
+<li>Since we only have 1 statement, <em>p</em>, there are only 2 possible outcomes, either <em>p</em> is true, or it is false.</li>
+<li>We then figure out / calculate all the remaining columns and whether they are true or false.  In thise case, that is simply the <em>~p</em> column</li>
+</ul></li>
+</ul>
+
+<p>To recap, any time <em>p</em> is true, <em>~p</em> is false, and vice-versa.  This can be quickly seen from the truth table.</p>
+
+<h3 id="toc_16">Conjunction (<em>and</em>)</h3>
+
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p &#8743; q</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+
+<p>As we can see, only the first case - when both are true - is the conjunction true.</p>
+
+<h3 id="toc_17">Disjunction (<em>or</em>)</h3>
+
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p &#8744; q</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+
+<p>As we can see, only the last case - when both are false - is the disjunction false.</p>
+
+<hr>
+
+<p>We&#39;ll see more truth tables and symbols as we cover more material.</p>
+
+<h1 id="toc_18">Resources</h1>
+
+<p>I found some great resources, and wanted to provide them to you all.</p>
+
+<p>The first one on this list, <em>Modern Math for Elementary Schoolers</em> is truly amazing!!  &quot;Modern Math&quot; is really what it says (relatively recently developed math), but most people call it &quot;advanced math&quot;.  I prefer &quot;modern math&quot; because some of the concepts are not particularly advanced or complex, just things that we don&#39;t normally teach our kids.  The author did a great job sussing out what smart kids willing to learn could handle.</p>
+
+<ul>
+<li><a href="http://old.naturalmath.com/DeltaStreamMedia/OlegGleizerModernMathematics_12_2011.pdf">Modern Math for Elementary Schoolers</a></li>
+<li><a href="./symbolic.logic.intro.pdf">Introduction to Symbolic Logic</a> (I&#39;m not sure where I found this one originally.)</li>
+<li><a href="./propositional.logic.1.pdf">Propositional Logic PPT</a> (Also not sure where I originally found it.)</li>
+<li>Some fun <a href="./3E_Lewis_Carroll_Puzzles.pdf">Lewis Carroll logic puzzles</a></li>
+<li>A <a href="https://en.wikipedia.org/wiki/First-order_logic">wikipedia link on logic</a></li>
+<li>A <a href="http://somerby.net/mack/logic/">cute little logic calculator</a></li>
+</ul>
 
 
 
