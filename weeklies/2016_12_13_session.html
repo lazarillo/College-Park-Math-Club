@@ -6,11 +6,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>2016_12_13_session</title>
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
 
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
 
 <style type="text/css">
 body {
@@ -329,17 +331,97 @@ sup {
 
 <h2 id="toc_1">Understanding infinite series</h2>
 
+<p>(Note: the following is <strong><em>not</em></strong> stuff I expect the kids to talk about.  It&#39;s just that some of the parents seemed quite interested in getting into the nitty-gritty, and I was more than happy to oblige.)</p>
+
 <p>I was chatting with Karen and another of the moms (I am horrible with names, I deeply apologize for forgetting your name), and we were discussing the following infinite series:</p>
 
-<blockquote>
-<p> $s_{n} =  \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + ... + \frac{1}{2^{n}}$ </p>
-</blockquote>
+<p>A: $s_{n} =  \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + ... + \frac{1}{2^{n}}$</p>
 
 <p>and</p>
 
-<blockquote>
-<p>$s_{n} =  \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}$</p>
-</blockquote>
+<p>B: $s_{n} =  \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... + \frac{1}{n}$</p>
+
+<hr>
+
+<p>The second series diverges (goes to infinity) as <em>n</em> goes to infinity.  This is because the series</p>
+
+<p>$s_{n} =  \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + ... + \frac{1}{2}$</p>
+
+<p>goes to infinity (we keep adding $\frac{1}{2}$ forever), and the series</p>
+
+<p>$s_{n} =  \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... + \frac{1}{n}$</p>
+
+<p>could also be written as</p>
+
+<p>$s_{n} =  \frac{1}{2} + \left(\frac{1}{3} + \frac{1}{4}\right) + \left(\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}\right) +  ... + \frac{1}{n}$</p>
+
+<p>which you can hopefully see is continually adding numbers <em>slightly larger than</em> $\frac{1}{2}$, so this will diverge as well.</p>
+
+<hr>
+
+<p>For the first series, I had explained it using a spatial analogy:  if you imagine that <em>1</em> is a $1 \times 1$ square, then $\frac{1}{2}$ is a $1 \times \frac{1}{2}$ rectangle. $\frac{1}{4} is a $\frac{1}{2} \times \frac{1}{2}$ square. If we draw them all up, we&#39;ll see that they approach a total of 1.  (That is, the sum $\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + ... + \frac{1}{2^n}$ will eventually reach 1.)</p>
+
+<h2 id="toc_2">Understanding the <em>generalized</em> infinite series</h2>
+
+<p>We then started discussing the series</p>
+
+<p>$s_{n} =  \frac{1}{3} + \frac{1}{9} + \frac{1}{27} + ... + \frac{1}{3^{n}}$</p>
+
+<p>and trying to figure out what it would reach.  And being anal-retentive about the math, I&#39;d really wanted to generalize the concept of something like:</p>
+
+<p>$s_{n} =  \frac{1}{k} + \frac{1}{k^2} + \frac{1}{k^3} + ... + \frac{1}{k^{n}}$</p>
+
+<p>where <em>k</em> is a known integer.  E.g., we&#39;d looked at $k = 2$, and now wanted to look at $k = 3$.</p>
+
+<p>We couldn&#39;t easily use the geometric trick, and I&#39;d realized that I wouldn&#39;t be able to say anything intelligent with the kids clamoring. So I thought about it later, and had to <a href="https://en.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">refresh my memory by looking up an official proof</a>.</p>
+
+<p>Using the same logic as shown there, we can do the following:</p>
+
+<hr>
+
+<p>Starting with</p>
+
+<p>$s_{n} =  \frac{1}{k} + \frac{1}{k^2} + \frac{1}{k^3} + ... + \frac{1}{k^n}$</p>
+
+<p>we can then multiply each side by <em>k</em>:</p>
+
+<p>$\left(k \times s_{n}\right) =  \frac{k}{k} + \frac{k}{k^2} + \frac{k}{k^3} + ... + \frac{k}{k^n}$</p>
+
+<p>$=  1 + \frac{1}{k} + \frac{1}{k^2} + \frac{1}{k^3} + ... + \frac{1}{k^{n-1}}$</p>
+
+<p>$=  1 + s_{n} - \frac{1}{k^n}$</p>
+
+<p>Moving things around a bit, we have:</p>
+
+<p>$\left(k - 1\right) \times s_{n} = 1 - \frac{1}{k^n}$</p>
+
+<p>which is simply</p>
+
+<p>$\left(k - 1\right) \times s_{n} = 1$</p>
+
+<p>since $\frac{1}{k^n}$ is &quot;vanishingly small&quot; as n approaches infinity.  (We&#39;re able to do these &quot;vanishingly small&quot; tricks when we are adding or subtracting from something &quot;non-small&quot;.  Ask me if curious.)</p>
+
+<p>Then the final step is</p>
+
+<p>$s_{n} = \frac{1}{k - 1}$</p>
+
+<hr>
+
+<p>Whew!!</p>
+
+<p>So, for a few quick rundowns:</p>
+
+<p>$k = 2$: the series totals 1</p>
+
+<p>$k = 3$: the series totals $\frac{1}{2}$</p>
+
+<p>etc.</p>
+
+<p>Again, to be clear, $k = 3$ means that the following series</p>
+
+<p>$s_{n} =  \frac{1}{3} + \frac{1}{9} + \frac{1}{27} + ... + \frac{1}{3^{n}}$</p>
+
+<p>totals $\frac{1}{2}$.</p>
 
 
 
