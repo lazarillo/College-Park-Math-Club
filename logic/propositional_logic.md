@@ -10,14 +10,24 @@ Here we will work with [*Propositional Logic*](https://en.wikipedia.org/wiki/Pro
 
 The easiest way to define these two forms of logic is by the difference between them, and via examples.
 
+Below are two sources that capture the essence, but in fairly different ways:
 
 > Propositional Logic v. Predicate Logic: propositional logic studies "plain" statements focusing on particular truths, while predicate logic includes quantifiers and variables.
 
-Well, yeah, that's great, but ***what does that mean??**
+and
 
-The following is a somewhat tenuous analogy, but think of propositional logic as <em>3 + 4 = 7</em> (True) or <em>5 + 2 = 11</em> (False), and predicate logic as <em>x + 7 = 14</em> (True when <em>x = 7</em>) or <em>x + 3 * y = 22</em> (True for certain combinations of <em>x</em> & <em>y</em>).
+> Propositional Logic v. Predicate Logic: In propositional logic, we use letters to symbolize entire propositions... In predicate logic, we symbolize subject and predicate separately.
 
-Lastly, propositional logic is not solely the purview of numbers. We'll mostly work with sentences.
+(I forget where I found the first quote, but you can find the [second quote here](https://www.quora.com/What-is-the-precise-difference-between-propositional-and-predicate-logic).)
+
+Well, yeah, that's great, but ***what does that mean??***
+
+The link above goes on to give an example, by introducing symbols.  We'll get to the symbols later, but the point is fairly clear.
+
+ - Propositional logic: "Socrates is a man" would be represented simply as $$S$$.  It is a statement, a single statement.
+ - Predicate logic: "Socrates is a man" would be represented as the combination of the *subject* (Socrates) and the *predicate* (to be a man).  Therefore, it would be represented as $$Ms$$.
+     - (Typically the predicates are in capital letters and the subjects in small letters.)
+
 
 ## Examples of Propositional and Predicate Logic
 
@@ -190,27 +200,27 @@ After each sentence, I provided a letter, which will act as the shorthand for th
 
 We also need to introduce some symbols to represent these logical terms we've introduced:
 
- - not: *~*
- - and: *ADD THE AND SYMBOL HERE*
- - or: *ADD THE OR SYMBOL HERE*
+ - not: $$\neg$$ (or sometimes *~* )
+ - and: $$\land$$
+ - or: $$\lor$$
 
 So, I can write something like
 
-> d *ADD THE OR SYMBOL HERE* p
+> d $$\lor$$ p
 
-> ~p *ADD THE AND SYMBOL HERE* c
+> ~p $$\land$$ c
 
 The nice thing about using these symbols, is that guaranteed truths, or *tautologies* become much easier to spot:
 
 The statement
 
-> ~g *ADD THE OR SYMBOL HERE* g
+> ~g $$\lor$$ g
 
 ***must*** be true, regardless of what "g" actually stands for.
 
 Similarly, the statement
 
-> ~g *ADD THE AND SYMBOL HERE* g
+> ~g $$\land$$ g
 
 ***must*** be false, regardless of what "g" actually stands for.
 
@@ -242,7 +252,7 @@ To recap, any time *p* is true, *~p* is false, and vice-versa.  This can be quic
 
 ### Conjunction (*and*)
 
-| p | q | p ***PUT IN THE AND SYMBOL*** q |
+| p | q | p $$\land$$ q |
 | --- | --- | --- |
 | T | T | T |
 | F | T | F |
@@ -253,7 +263,7 @@ As we can see, only the first case - when both are true - is the conjunction tru
 
 ### Disjunction (*or*)
 
-| p | q | p ***PUT IN THE AND SYMBOL*** q |
+| p | q | p $$\lor$$ q |
 | --- | --- | --- |
 | T | T | T |
 | F | T | T |

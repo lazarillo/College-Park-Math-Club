@@ -331,6 +331,7 @@ sup {
   <li><a href="#toc_13">Symbolic Logic</a></li>
   <li><a href="#toc_14">Truth Tables</a></li>
   <li><a href="#toc_18">Resources</a></li>
+</ul>
 
 
 <h2 id="toc_1">Quick Overview</h2>
@@ -339,15 +340,32 @@ sup {
 
 <p>The easiest way to define these two forms of logic is by the difference between them, and via examples.</p>
 
+<p>Below are two sources that capture the essence, but in fairly different ways:</p>
+
 <blockquote>
 <p>Propositional Logic v. Predicate Logic: propositional logic studies &quot;plain&quot; statements focusing on particular truths, while predicate logic includes quantifiers and variables.</p>
 </blockquote>
 
-<p>Well, yeah, that&#39;s great, but *<strong>what does that mean??</strong></p>
+<p>and</p>
 
-<p>The following is a somewhat tenuous analogy, but think of propositional logic as <em>3 + 4 = 7</em> (True) or <em>5 + 2 = 11</em> (False), and predicate logic as <em>x + 7 = 14</em> (True when <em>x = 7</em>) or <em>x + 3 * y = 22</em> (True for certain combinations of <em>x</em> &amp; <em>y</em>).</p>
+<blockquote>
+<p>Propositional Logic v. Predicate Logic: In propositional logic, we use letters to symbolize entire propositions... In predicate logic, we symbolize subject and predicate separately.</p>
+</blockquote>
 
-<p>Lastly, propositional logic is not solely the purview of numbers. We&#39;ll mostly work with sentences.</p>
+<p>(I forget where I found the first quote, but you can find the <a href="https://www.quora.com/What-is-the-precise-difference-between-propositional-and-predicate-logic">second quote here</a>.)</p>
+
+<p>Well, yeah, that&#39;s great, but <strong><em>what does that mean??</em></strong></p>
+
+<p>The link above goes on to give an example, by introducing symbols.  We&#39;ll get to the symbols later, but the point is fairly clear.</p>
+
+<ul>
+<li>Propositional logic: &quot;Socrates is a man&quot; would be represented simply as \(S\).  It is a statement, a single statement.</li>
+<li>Predicate logic: &quot;Socrates is a man&quot; would be represented as the combination of the <em>subject</em> (Socrates) and the <em>predicate</em> (to be a man).  Therefore, it would be represented as \(Ms\).
+
+<ul>
+<li>(Typically the predicates are in capital letters and the subjects in small letters.)</li>
+</ul></li>
+</ul>
 
 <h2 id="toc_2">Examples of Propositional and Predicate Logic</h2>
 
@@ -565,17 +583,17 @@ sup {
 <p>We also need to introduce some symbols to represent these logical terms we&#39;ve introduced:</p>
 
 <ul>
-<li>not: <em>~</em></li>
-<li>and: <em>&#8743;</em></li>
-<li>or: <em>&#8744;</em></li>
+<li>not: \(\neg\) (or sometimes <em>~</em> )</li>
+<li>and: \(\land\)</li>
+<li>or: \(\lor\)</li>
 </ul>
 
 <p>So, I can write something like</p>
 
 <blockquote>
-<p>d &#8744; p</p>
+<p>d \(\lor\) p</p>
 
-<p>~p &#8743; c</p>
+<p>~p \(\land\) c</p>
 </blockquote>
 
 <p>The nice thing about using these symbols, is that guaranteed truths, or <em>tautologies</em> become much easier to spot:</p>
@@ -583,7 +601,7 @@ sup {
 <p>The statement</p>
 
 <blockquote>
-<p>~g &#8744; g</p>
+<p>~g \(\lor\) g</p>
 </blockquote>
 
 <p><strong><em>must</em></strong> be true, regardless of what &quot;g&quot; actually stands for.</p>
@@ -591,7 +609,7 @@ sup {
 <p>Similarly, the statement</p>
 
 <blockquote>
-<p>~g &#8743; g</p>
+<p>~g \(\land\) g</p>
 </blockquote>
 
 <p><strong><em>must</em></strong> be false, regardless of what &quot;g&quot; actually stands for.</p>
@@ -649,7 +667,7 @@ sup {
 <tr>
 <th>p</th>
 <th>q</th>
-<th>p &#8743; q</th>
+<th>p \(\land\) q</th>
 </tr>
 </thead>
 
@@ -686,7 +704,7 @@ sup {
 <tr>
 <th>p</th>
 <th>q</th>
-<th>p &#8744; q</th>
+<th>p \(\lor\) q</th>
 </tr>
 </thead>
 
@@ -736,6 +754,25 @@ sup {
 </ul>
 
 
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 </body>
