@@ -1,14 +1,14 @@
 ---
 title: "Math Club - Probability, Part 1"
 author: "Mike Williamson"
-date: "May 18, 2015"
+date: "Oct 24th, 2017"
 output:
+  html_document:
+    toc: yes
   pdf_document:
     number_sections: yes
     toc: yes
     toc_depth: 2
-  html_document:
-    toc: yes
 fontsize: 12pt
 ---
 
@@ -40,7 +40,7 @@ library(ggplot2)
 
 -----
 
-![Art by Dominic Alves](/Users/mike/Documents/Personal/math-club/Probability-class/popeye_gambling_by_Dominic_Alves_large.jpg)
+![Art by Dominic Alves](./popeye_gambling_by_Dominic_Alves_large.jpg)
 *[Art by Dominic Alves](https://www.flickr.com/photos/dominicspics/1128401985/in/photolist-2HHmAD-qynNVq-7q8op8-7qQ76E-8Jw7Ub-7dTjSE-42zpFh-qNE9SS-oMLzWy-5HqP9c-2TRy2x-5HqSaT-9cYB7z-5Hv9UW-5HqSDF)*
 
 #What is Probability?
