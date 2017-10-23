@@ -6,7 +6,7 @@ This site is mostly for the parents... I don't expect kids to do any extra / add
 
 ## Current Course ('17 - '18 School Year)
 
- - [Probability, some background and introduction](./R_stuff/Probability-class/Probability.1.html)
+ - [Probability, some background and introduction](./R_stuff/Probability-class/Probability_1.html)
 
 ## Previous Work
 
