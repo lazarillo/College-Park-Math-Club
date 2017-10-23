@@ -85,9 +85,9 @@ Specifically, here are a few attributes that $P$, the probability of an event oc
 * $P$ is the probability of a possible outcome from an experiment / action.
     * In other words, the probability of landing a heads from a coin toss **assumes a coin is tossed**.  So, the chance that **neither a heads nor tails** occurs is zero.  Implied in the probability is that the action, in this case, the coin toss, has occurred.
 * Continuing on the notion above, the probability that **something** occurs is 1, 100%.
-    * "Something" can be defined as nothing, as long as the definition is in the probability.  For instance, if you want the probability that a patient has liver cancer, there are two possibilities, either the patient **has** cancer or she **does not**.
+    * "Something" can be defined as anything (or as nothing at all), as long as the definition is in the probability.  For instance, if you want the probability that a patient has liver cancer, there are two possibilities, either the patient **has** cancer or she **does not**.
 * The probability of two *mutually exclusive* outcomes is the sum of their probabilities.
-    * The probability of a 1 on a die roll is $\frac{1}/{6}$, and the probability of a 2 on a die roll is = $\frac{1}/{6}$, so the probability of a **1 or 2** on a die roll is simply $\frac{1}{6}+\frac{1}{6} = \frac{2}{6} = \frac{1}{3}$.
+    * The probability of a 1 on a die roll is $\frac{1}{6}$, and the probability of a 2 on a die roll is = $\frac{1}{6}$, so the probability of a **1 or 2** on a die roll is simply $\frac{1}{6}+\frac{1}{6} = \frac{2}{6} = \frac{1}{3}$.
     * Mutually exclusive?  Huh?  Can you explain that?  (Yes, I will, in the next section.)
 
 -----
@@ -116,7 +116,7 @@ Let's go through it.  What does it mean to say the following?
 
 > the probability of an even number
 
-This means either a 2, 4, or 6.  Ahhh... of course, I've ***counted the 2 twice***... once when I said the *probability of getting a 2*, and once when I said the *probability of getting an even number*!
+This means either a 2, 4, or 6.  Ahhh... of course, I've ***counted the occurrence of a 2 twice***... once when I said the "probability of getting a 2"", and once when I said the "probability of getting an even number"!
 
 OK, so in this case I get it, but how would I handle this, in a *generic* situation?  How do I handle it in a situation where maybe the probabilities are being counted twice (or more)?
 
@@ -270,7 +270,7 @@ $$P\left(rolling\ six \right) = \frac{1}{6}$$
 
 and
 
-$$P\left(rolling\ six \mid rolled\ six \right)$$
+$$P\left(rolling\ six \mid rolled\ six \right) = \frac{1}{6}$$
 
 What's the difference?  They are both $\frac{1}{6}$, right?  Yes, ***in this case***, but not always.
 
