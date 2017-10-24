@@ -34,6 +34,7 @@ library(ggplot2)
     * For instance $$\binom{6}{4} = \frac{6!}{\left(6 - 4\right)! \times 4!} =  \frac{6!}{2! \times 4!} =$$ $$\frac{6 \times 5 \times \left(4 \times 3 \times 2 \times 1 \right)}{\left(2 \times 1 \right) \times \left(4 \times 3 \times 2 \times 1\right)} = $$ (*notice how the $4 \times 3 \times 2 \times 1$ is on both the numerator and denominator*) $$\frac{6 \times 5}{2} =15$$
     * The binomial coefficient $\binom{n}{k}$ is pronounced "*n choose k*".  So the example above would be pronounced "*6 choose 4*".
     * The binomail coefficient is only valid on natural numbers, furthermore, $k \leq n$.
+        * (This is not [strictly true](https://www.johndcook.com/blog/binomial_coefficients/), but it is necessary in any cases we'll work with.)
     * Because $k \leq n$, binomial coefficient calculations can be simplified by $$\binom{n}{k} = \frac{n \times \left(n - 1 \right) \times \cdots \times \left(n - k + 1 \right)}{k!}$$ 
         * Applying to the example above, we could have quickly said $$\binom{6}{4} = \frac{6 \times 5}{2!} = 15$$
         * In fact, since the factorial can overflow (have too large of numbers for the computer to handle, e.g., $170! > 10^{306}$, which is the current computer limit), *n choose k* is always calculated in this way.
@@ -110,13 +111,13 @@ Let's think about the following scenario:
 
 ## "Adding" probabilities:  it's *really* the union of probabilities
 
-Well, I'm leading you on, so the scenario above probably wrong.
+Well, I'm leading you on. The scenario above is wrong.
 
 Let's go through it.  What does it mean to say the following?
 
 > the probability of an even number
 
-This means either a 2, 4, or 6.  Ahhh... of course, I've ***counted the occurrence of a 2 twice***... once when I said the "probability of getting a 2"", and once when I said the "probability of getting an even number"!
+This means the probability of either a 2, 4, or 6 occurring.  Ahhh... of course, I've ***counted the occurrence of a 2 twice***... once when I said the "probability of getting a 2"", and once when I said the "probability of getting an even number"!
 
 OK, so in this case I get it, but how would I handle this, in a *generic* situation?  How do I handle it in a situation where maybe the probabilities are being counted twice (or more)?
 
@@ -126,7 +127,7 @@ We don't actually *add* the probabilities, we perform a **union** of the probabi
 
 I should have said
 
-* The probability of two outcomes is the ***union*** of their probabilities.
+* ***The probability of two outcomes is the union of their probabilities***.
 
 How do we figure out the union?  We have to specify what the outcomes actually are, then take the union of the outcomes, which we already know to be the *combination of the outcomes, removing any duplicates*, from our *set theory* work.
 
@@ -201,7 +202,7 @@ which is what was said early on.  So, when we say ***mutually exclusive***, we m
 
 OK, when we were "adding" probabilities - or, more accurately, when we were creating the union of probabilities - we were looking at ***one event*** and the different outcomes for that one event.
 
-## Inuitive Understanding
+## Intuitive Understanding
 
 What about when we're looking at multiple events occurring?  For instance:
 
@@ -209,7 +210,7 @@ What about when we're looking at multiple events occurring?  For instance:
 
 You probably already know the answer, it's $\frac{1}{36}$.
 
-You probably know how to get that answer:  simply multiply the chance for the first event occurring, $\frac{1}{36}$, by the chance for the second event occurring, also $\frac{1}{36}$.
+You probably know how to get that answer:  simply multiply the chance for the first event occurring, $\frac{1}{6}$, by the chance for the second event occurring, also $\frac{1}{6}$.
 
 ## Mathematical Rigor
 
@@ -219,7 +220,7 @@ Earlier, when discussing the mathematically rigorous way to define a coin toss, 
 
 $$P\left(heads \mid fair\ coin \right) = 50 \% = 0.5$$
 
-We mentioned the "given that" portion, in this case "given that it was a fair coin", written $\left( \mid fair\ coin \right)$.  But we just left that idea hanging.  Well, let's delve into it a bit more.
+Remember that whole "given that" phrase?  In this case "given that it was a fair coin", written $\left( \mid fair\ coin \right)$.  But we never really explained why mentioning this was important.  Well, let's delve into it a bit more now.
 
 We will use the same ***given that*** language in order to rigorously solve our $\frac{1}{36}$ answer above.
 
@@ -229,21 +230,20 @@ What's another way that we can write the following?
 
 Well, I could also say:
 
-> What is the likelihood of rolling a six given that I've already rolled a six?
+> What is the likelihood of rolling a six given that I just rolled a six?
 
 Using our rigorous symbol methods:
 
-$$P\left(rolling\ six \mid rolled\ six \right) = \frac{1}{6} = 16.67 \%$$
+$$P\left(rolling\ six \mid rolled\ six \right) = \frac{1}{6}$$
 
------
 
-Wait, so the probability of rolling a 6 "given that" I've already rolled a 6 is still $\frac{1}{6}$??  Yep!
+Wait, so the probability of rolling a 6 "given that" I've already rolled a 6 is still $\frac{1}{6}$??  Yep!  What are we really saying?  We're simply saying that the the chance of rolling a 6 is $\frac{1}{6}$, it doesn't matter whether we just rolled a 6 right before it or not.  We're simply rolling one die, so the chance of rolling a 6 on that one die is $\frac{1}{6}$, no matter what happened beforehand.
 
-But, that's the same as the probability of rolling a 6 without any of this "given that" verbiage!  Again, yes, that's correct.  So, what's the point of using "given that"?  There are two reasons, one of which I'll give now:
+*But, that's the same as the probability of rolling a 6 without any of this "given that" verbiage!*  Again, yes, that's correct.  So, what's the point of using "given that"?
 
-> I know the probability of rolling a six, it's just $\frac{1}{6}$.  So, I can say what the probability of rolling the ***2nd*** six is.  It's simply $\frac{1}{6}$, ***given that*** I have already rolled a six.
+Saying that one more time:
 
-> So, what's the probability of rolling the first six?  It's just $\frac{1}{6}$ also.
+> I know the probability of rolling a six, it's just $\frac{1}{6}$.  So, I can say the probability of rolling the ***2^nd^*** six (assuming the first 6 was already rolled) is simply $\frac{1}{6}$.   (***Given that*** I have already rolled a six beforehand).  I can also say the probability of rolling the 1^st^ six is $\frac{1}{6}$, of course.
 
 ## ***Given that*** : Multiply probabilities (sort of)
 
@@ -264,17 +264,13 @@ Let's break this down again and make sure we understand what happened:
 
 -----
 
-OK, so I still don't understand the "given that" phrase we've been using!  It didn't make any difference in the example above.
-
-$$P\left(rolling\ six \right) = \frac{1}{6}$$
-
-and
-
-$$P\left(rolling\ six \mid rolled\ six \right) = \frac{1}{6}$$
+OK, so I still don't understand the "given that" phrase we've been using!  **It didn't make any difference in the example above.**  (In other words, why couldn't I just write $P\left(rolling\ six \right)$ since it's the same thing as $P\left(rolling\ six \mid rolled\ six \right)$)
 
 What's the difference?  They are both $\frac{1}{6}$, right?  Yes, ***in this case***, but not always.
 
 ## ***Given that*** : Conditional probabilities
+
+### Independent Events
 
 For all the cases we've talked about above, we were looking at the probabilities of ***independent*** events occurring.
 
@@ -282,13 +278,14 @@ That is, if I rolled a 6 the 1^st^ time, the likelihood that I could roll a 6 th
 
 Huh?
 
-Two roll 2 sixes, I first roll a six, then I roll another six.  Once the ***1^st^*** 6 has been rolled, it's just as likely for the 2^nd^ 6 to be rolled:  the 1^st^ one already happened.  It's in the past.  We can forget about it.
+When I roll two 2 sixes, I first roll a six, then I roll another six.  ***Once the 1^st^ 6 has been rolled***, it's just as likely for the 2^nd^ 6 to be rolled:  the 1^st^ one already happened.  It's in the past.  We can forget about it.
 
-But won't that always be true?  No, not for ***dependent*** events.
+But won't that always be true??  No, not for ***dependent*** events.
 
------
 
-Here's an example.
+### Dependent Events
+
+We'll talk about dependent events more later, but here's an example.
 
 Instead of rolling dice, let's look at playing cards.  (It's fun to stick with games & gambling!)  In case you don't know, here is some information on a deck of cards ([sans](http://en.wiktionary.org/wiki/sans) jokers):
 
@@ -307,7 +304,7 @@ Well, there are 4 queens, and there are 52 cards.  So...
 
 $$P\left(Getting\ Queen \right) = \frac{4}{52} = \frac{1}{13}$$
 
-and
+and for the moment, let's imagine it's like the dice, and the chance is still the same:
 
 $$P\left(Getting\ Queen \mid Got\ Queen \right) = \frac{4}{52} = \frac{1}{13}$$
 
@@ -349,7 +346,146 @@ $$P\left(Getting\ 2\ Queens \right) = P\left(Getting\ Queen \mid Fresh\ Deck \ri
 
 $$P\left(Getting\ 2\ Queens \right) = \frac{1}{13} \times \frac{1}{17} = \frac{1}{221} = 0.452 \%$$
 
-# Continuation...
+# Solving "Opposite (Complementary) Problems"
 
-Click here to see the next stuff...
+The last topic to cover before we can attack the cool [Birthday Problem](https://en.wikipedia.org/wiki/Birthday_problem) below is to think of how to ***frame*** a problem.
+
+Above we looked at the chance of rolling 2 sixes in a row as $\frac{1}{36}$ ($\frac{1}{6} \times \frac{1}{6}$).  But, how about this problem:
+
+> What's the chance of rolling ***at least 1 six*** out of 2 rolls (on a six-sided die)?
+
+Wow!  How to attack that?  It seems quite challenging.  There are some conditionals we haven't discussed.  It seems like we need to new knowledge.
+
+-----
+
+We don't!  We just need to rephrase things.  First, let's try this:
+
+> What's the chance of ***not*** rolling a six (on a six-sided die)?
+
+Well, we could roll a 1, 2, 3, 4, or 5.  So, the chance is simply $\frac{5}{6}$.  But there's actually another way to phrase it.  We could also say ***it's the opposite of the chance to roll a 6***.
+
+Saying "opposite" in this case is a bit sloppy.  More mathematically accurately, we would say it is the ***complement** of the chance of rolling a 6.
+
+So, if the chance to roll a 6 is $\frac{1}{6}$, then the chance to ***not*** roll a six is $1 - \frac{1}{6} = \frac{5}{6}$.  In other words:
+
+Complementary Probabilities:
+
+$$P\left(not\ A\right) = 1 - P\left(A\right)$$
+
+Alright!  Armed with this knowledge, we have everything we need to tackle the birthday problem.
+
+# [Birthday Problem](https://en.wikipedia.org/wiki/Birthday_problem)
+
+### Statement
+
+Now onto a fun puzzle where we can use all of what we've learned here.
+
+> What's the chance that 2 students in a class of 25 have the same birthday?
+
+### Gut Guesses
+
+Let's not throw in all the fancy math we have learned yet, and just "spitball it".  Well, gosh, there are 365 days in a year (usually), and only 25 students.  It just seems **really** unlikely that any students would share a birthday, right?
+
+-----
+
+Who knows what the right answer is, but my gut tells me maybe 10% chance?  Maybe 20% at best??
+
+## Simpler Problem Reformulation
+
+Let's first start to break the problem down using our probability verbiage, so that we can then use our newfound probability knowledge.
+
+Let's make the problem a bit smaller, so that we can think about it easier.  If we were to say "What's the chance that 2 students in a class of 1 have the same birthday?" that doesn't really make sense; there is only 1 person in the class!  So, the simplest we can make it is:
+
+> What's the chance that 2 students in a class of 2 have the same birthday?
+
+In this case, "all" of the students would need to have the same birthday.  But in this case, notice that **it doesn't matter** ***which*** **day is their birthday, just that they share the same day**.  In other words, the day of the first birthday chosen doesn't really matter.
+
+-----
+
+We'll come back to that idea of how to handle which day is their shared birthday in a moment.  First, let's jump to the quickest solution to this simple problem:
+
+What we really want is to find the chance that the 2 students share their birthday.  As mentioned above, all that matters is whether the ***second*** student has the same birthday as the first.
+
+$$P\left(Birthday\ On\ "Occupied\ Day" \mid 1\ Previous\ Student\right) = \frac{1}{365}$$
+
+In other words:  the chance that 2 students share the same birthday in a class of 2 is just the chance that the 2^nd^ student's birthday is on the same day as the 1^st^ student's birthday.  The first student's birthday will only take up 1 day (out of 365), so the chance is $\frac{1}{365}$ that the second student's birthday is on the same day as the second students.
+
+-----
+
+Before we leave this simple reformulation, let's first re-phrase the problem using this *complement problem* restructuring that we just saw in the last section.
+
+Instead of saying "what's the chance the 2 student's share the same birthday?", let's say:
+
+> What is the chance that 2 students out of a class of 2 do ***not*** share the same birthday?  (Then take the complement of this answer.)
+
+Why do we want to do that?  Because it will make it easier to frame the problem when we add more students.
+
+If we frame the complement problem, we have two probabilities that we need to solve and multiply:
+
+ 1. The probability that the first day chosen is "unoccupied" by a birthday.
+ 2. The probability that the second day chosen is unoccupied by a birthday.
+
+Remember that we said the day of the first birthday chosen doesn't really matter.  In probability jargon, the probability that the **first** birthday occurs on a day didn't already have a birthday on it is 100% (remember, it's the **first** one we're looking at!):
+
+$$P\left(First\ Birthday\ On\ "Unoccupied\ Day" \right) = 1$$
+
+The second birthday still has a very high chance of falling on an unoccupied day, but not 100 %.  It has a $\frac{364}{365}$ chance of falling on an unoccupied day (since that last day is, of course, the birthday of the first person).
+
+And to clean things up, let's frame this probability using our "given that" formulations:
+
+$$P\left(Birthday\ On\ "Unoccupied"\ Day \mid 1\ Previous\ Student\right) = \frac{364}{365}$$
+
+-----
+
+So, the full probability is:
+
+$$P\left(All\ Birthdays\ On\ "Unoccupied"\ Days \right) =$$
+$$P\left(Birthday\ On\ "Unoccupied"\ Days \mid 0\ Previous\ Students\right) \times$$
+$$P\left(Birthday\ On\ "Unoccupied"\ Days \mid 1\ Previous\ Student\right)$$
+
+That's **awful wordy**, so let's use some abbreviations and say:
+
+$$P\left(None\ Shared \right) = P\left(Bday \mid 0 \right) \times P\left(Bday \mid 1 \right)$$
+
+And remember that:
+
+$$P\left(None\ Shared \right) = 1- P\left(All\ Shared \right)$$
+
+Finally, putting in some numbers:
+
+$$P\left(All\ Shared \right) = 1 - \left(1 \times \frac{364}{365} \right) = \frac{1}{365}$$
+
+## Full Problem
+
+Now that we've finally rigorously (and usefully) structured the simpler problem, it's relatively easy to structure the full problem.  (This is often the case in probability... it's all about understanding how to frame the problem; how to translate the ideas into rigorous math.)
+
+Above, by the time we'd finished, we'd found a way to be able to handle multiple events occurring: the chance of the first and second students having "unoccupied" birthdays (even though the first student's chance was 1).
+
+If we can find the chance that all 25 students would have unoccupied birthdays, then we can take the complement, and we have the chance that ***at least 1 student shares a birthday with at least 1 other***.  (Notice that we won't find how many students share birthdays, whether 3 students share the same birthday, or anything else.  We are merely finding that at least 1 shares with at least 1 other.)
+
+Here we go:
+
+$$P\left(None\ Shared \right) = P\left(Bday \mid 0 \right) \times P\left(Bday \mid 1 \right) \times \dotsm \times P\left(Bday \mid 24 \right)$$
+
+We have 25 students, so we will need 25 probabilities, and each student's probability is calculated given that *one less* student's birthday is found.  Hence, the "givens" range from 0 to 24.
+
+Also, ***since our claim is that each day is unoccupied***, they are all mutually exclusive, so that the range of available days keeps shrinking by a day.  In other words, the formula above becomes:
+
+$$P\left(None\ Shared \right) = 1 \times \frac{364}{365} \times \dotsm \times \frac{341}{365}$$
+
+You can go ahead and calculate that, but unless I made a typo, you'll come to:
+
+$$P\left(None\ Shared \right) = 0.4313$$
+
+And finally, switching back to the answer we really want (the chances that at least 2 students share a birthday):
+
+$$P\left(All\ Shared \right) = 1- P\left(None\ Shared \right) = 0.5687$$
+
+-----
+
+### Yes, that's right:  there is a ***57 %*** chance that at least 2 kids will share a birthday in the class of 25 students!!!  Crazy, huh?
+
+And pretty far off from our initial assumption of about 10 % - 20 %.  Probabilities are crazy that way, once you move into slightly more complicated stuff!
+
+
 
