@@ -1,87 +1,68 @@
 ---
 title: "Math Club - Probability, Part 2"
 author: "Mike Williamson"
-date: "May 18, 2015"
+date: "November 14^th^, 2017"
 runtime: shiny
 output:
   html_document:
     number_sections: yes
     toc: yes
     toc_depth: 2
-  pdf_document:
-    toc: yes
-  word_document: default
-fontsize: 12pt
 ---
 
-```{r echo=FALSE, message=FALSE}
-library(ggplot2)
-```
 
 This document is a continuation of the Math Club - Probability, Part 1.
 
-#Looking at Different Distributions
+# Looking at Different Distributions
 
 ## Uniform Distribution
 
-We've been talking about "the roll of a die" or "flipping a coin".  We've also looked at calculating the ***combinations*** of probabilites, whether as a *union* or as succeeding (*"given that"*) events.  In all these scenarios, we studied the **uniform** distribution.  This is where the ***likelihood of each outcome is the same***.
+We've been talking about "the roll of a die" or "flipping a coin".  We've also looked at calculating the ***combinations*** of probabilites, whether as a *union* or as succeeding (*"given that"*) events.  In all these scenarios, the ***likelihood of each outcome is the same***.  This is referred to as a ***uniform distribution***.
 
-It's the same chance ($\frac{1}{6}$) to roll a 1, or a 2, or any side of a die.  But what about things that are *random* but not *uniform*?  We'll look at some of them next
-
------
+For instance, it's the same chance ($\frac{1}{6}$) to roll a 1, or a 2, or any of the numbers on the 6-sided die.
 
 
-##Playing with sample size
 
-But first, let's look at "sample size":
+## Playing with Uniform Distribution Sample Size
 
-When we played the "gambling game" (mentioned in the final section, **Games**), I specifically had you all roll the pair of dice 100 times.  This is because I wanted enough rolls so that things would turn out "as expected".
+When we played the "gambling game" (mentioned in the final section, "Games", of the last lesson), I specifically had you all roll the dice many times over.  This is because I wanted enough rolls so that things would turn out "as expected".
 
-Let's make that interactive.  Below is a graph which gives the "measured probability" of each outcome, which is actually just the number of times that outcome occurred, divided by the number of times all outcomes occurred.
+Let's simulate that with the interactive random number generator below.  Below is a plot which tallies the number of times each outcome occurred.
 
-E.g., if you choose $10$ samples, and the measured probability of $2$ is $0.3$, then it means that $2$ showed up $3$ times ($10 \times 3 = 0.3$).
+E.g., if you choose $10$ tries and a 6-sided die, and the observed count for the number $2$ is $4$, then that means the value $2$ showed up $4$ times.  In other words, $40\ \%$ of the times you rolled the die, the die value was $2$.
 
+But on a 6-sided die, the probability of rolling a $2$ is $\frac{1}{6}$; we just finished talking about that.  If the probability is only $\frac{1}{6}$ (or $16.67\ \%$), then **how come the $2$ actually showed up $40\ \%$ of the time??**
 
-```{r echo=FALSE}
-selectInput("n_samples", label = "Number of Samples:",
-            choices = c(1:5, 10, 20, 50, 1e2, 1e3, 1e4, 1e5),
-            selected = 10)
+Play around with the simulation below to see for yourself.
+
+```{r unif, echo=FALSE}
+shinyAppFile("./Probability_2_uniform.R",
+  options = list(
+    width = "100%", height = 700
+  )
+)
 ```
 
-```{r echo=FALSE}
-renderPlot({
-  ggplot(data.frame(die_roll=sample(x = 1:6, size = as.numeric(input$n_samples),
-                                    replace = TRUE)),
-         aes(x = die_roll)) +
-    geom_histogram(aes(y= ..density.., fill = ..count..), binwidth = 1,
-                   color = "darkgreen", origin = -0.5) +
-    labs(title = paste("# Times on a 6-Sided Die, out of", input$n_samples),
-         y = "Measured Probability", x = "Die Roll") + xlim(0, 7) +
-    theme(text = element_text(size = 23))
-})
-```
+As you can see by playing around with the number of tries above, sometimes even 100 tries, or observations, aren't enough to give the "real" shape of the **uniform distribution**, where we know each outcome is equally likely.
 
-But as you can see by playing around with the number of samples below, sometimes even 100 samples, or tries, aren't enough to give the "real" shape of the *uniform distribution*, where we know each outcome is equally likely.
-
-We **know** the probability is the same for each number to appear, and that the probability is $\frac{1}{6}$, or `r signif(1/6, 4)`, for the 6-sided die above.  But until the number of samples gets quite large, say around 1000 or so, we don't really see the lines flatten out and settle at $\frac{1}{6}$ very well.
+We **know** the probability is the same for each number to appear, and that the probability is $\frac{1}{6}$, or `r signif(1/6, 4)`, for the case of a 6-sided die.  But until the number of samples gets quite large, say around 1000 or so, we don't really see the lines flatten out and settle at $\frac{1}{6}$ very well.
 
 -----
-
 
 ## Normal Distribution
 
-At first you might have to think about it a bit, but then you'll realize there are a **ton** of cases where things are random, but not uniform:
+You might have to think about it a bit at first, but then you'll realize there are a **ton** of cases where things are **random, but not uniform**:
 
-* The height of 11 year olds
+* The height of 10 year olds
     * Very few are 3\` tall or 6\` tall, but many of you are around 4.5\` tall or so.
 
 * The temperature mid-day in May by us is typically around 70$^{\circ}$.  It might be as cold as 55$^{\circ}$ every now and again, but it won't dip down to 45$^{\circ}$.
 
-* The time it takes to finish your Mandarin homework.  One week it might take only 45 minutes for the whole week, the next week it might take a full 2 hours, but it won't ever take 100 hours.
+* The time it takes to finish your homework.  One week it might take only 45 minutes for the whole week, the next week it might take a full 2 hours, but it won't ever take 100 hours.
 
 * Etc.
 
-These sorts of distributions, where things occur more often "near the middle, typical value" are called ["*Normal*"](http://en.wikipedia.org/wiki/Normal_distribution) or "*Gaussian*" distributions.
+These sorts of distributions, **where things occur more often "near the middle, typical value" are called ["*Normal*"](http://en.wikipedia.org/wiki/Normal_distribution) or "*Gaussian*" distributions**.
 
 Below is a mock-up of one such *normal distribution*:
 
@@ -91,25 +72,14 @@ It should maybe make sense that this would follow a normal distribution.  Normal
 
 If the "typical" temperature is, say, 70^o^, then 69^o^ or 68^o^ is not unexpected, but 50^o^ is.
 
-
-```{r echo=FALSE}
-selectInput("n_days", label = "Number of Samples:",
-            choices = c(1:5, 10, 20, 50, 1e2, 1e3, 1e4, 1e5),
-            selected = 10)
+```{r norm, echo=FALSE}
+shinyAppFile("./Probability_2_normal.R",
+  options = list(
+    width = "100%", height = 700
+  )
+)
 ```
 
-```{r echo=FALSE}
-renderPlot({
-  ggplot(data.frame(Temperature=rnorm(as.numeric(input$n_days), 70, 6)),
-         aes(x = Temperature)) +
-    geom_histogram(aes(y= ..density.., fill = ..count..),
-                   color = "darkred") +
-    labs(title = paste("Temperature High in mid-May,", input$n_days, "Measurements"),
-         y = "Measured Probability", x = "Temperature") + 
-    scale_fill_gradient(low="white", high="red") + 
-    theme(text = element_text(size = 23))
-})
-```
 
 *(For the curious, I found that the historical average high on May 15th is 70$^{\circ}$, and that the lowest recorded high was 50$^{\circ}$.  Assuming $\sim$ 3000 measurements - 150 years' data, where about 20 days in May are approximately the same - a standard deviation of around 6 would yield a "lowest high" of 50$^{\circ}$.  So I said the standard deviation is 6$^{\circ}$.)*
 
@@ -121,23 +91,28 @@ As we've seen, the **normal** distribution has a symmetric, bell-curve shape.
 
 The **uniform** distribution is, well, uniform.  That is, it is flat, with the same probability for each value.
 
-But there are other random distributions that can occur.  Namely, the binomial distribution, which we'll look at now.  It looks something like:
+But there are other random distributions that can occur.  Namely, the ***[binomial distribution](http://en.wikipedia.org/wiki/Binomial_distribution)***, which we'll look at now.  It looks something like:
 
-```{r echo=FALSE}
+```{r ex_binom, echo=FALSE}
 renderPlot({
   ggplot(data.frame(Whatever=rbinom(1e5, 100, 0.025)), aes(x = Whatever)) +
-    geom_histogram(aes(y= ..density.., fill = ..count..), color = "darkgreen") +
+    geom_histogram(aes(y= ..density.., fill = ..count..),
+                   color = "darkgreen", binwidth = 1) +
     guides(fill = FALSE) + 
-    labs(title = "Binomial Distribution") +
+    labs(title = "Binomial Distribution", y = "Proportion", x = "") +
     scale_fill_gradient(low="white", high="green") + 
     theme(text = element_text(size = 23))
 })
 ```
 
+In fact, we cheated a little bit in the earlier normal distribution examples.  The time it takes for you to finish your homework is closer to a binomial distribution (or actually, a [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution)) than a normal distribution. We'll talk more about why that is, but here is a clue: normal distributions have long "tails" on both sides, but it can never take you less than $0\ hours$ to finish your homework, so it cannot have the long tails on both sides.
 
-### When would we use it?
 
-The ***[binomial distribution](http://en.wikipedia.org/wiki/Binomial_distribution)*** allows us to go back to our gambling obsession.
+### Back to Gambling!
+
+As mentioned above, the binomial distribution is useful in many cases. But all of them are based around tallies of successes and failures.
+
+So, the binomial distribution allows us to go back to our gambling obsession.
 
 Let's go back to our flipping of heads or tails on a coin.  I have a $50\%$ chance of getting a heads.  And I have a $25\%$ chance of getting two heads in a row.  Sure, we figured that out earlier.  Easy enough.
 
@@ -152,7 +127,7 @@ Well, before we jump into the technical verbiage, let's think about some of the 
 then what can I say about $X$, $Y$, and $P$?
 
 - If $X > Y$, then $P = 0$.
-    - Well, that's kinda obvious.  E.g., I can't get, say, 12 heads from only 10 coin flips, right?
+    - Well, that's kinda obvious.  For instance, I can't get, say, 12 heads from only 10 coin flips, right?
 - If $X = Y$ or $X = 0$, then there is **only** one way that can happen.
     - E.g., there is only one way I can get 8 heads from 8 coin flips... each flip must be a head.
 - If $0 < X < Y$, then there will be **more than** one way that can happen.
@@ -207,7 +182,7 @@ But what about
 
 > the chance of getting, say, 4 heads out of 10 coin flips??
 
-We *could* list out all the possibilities, but there has to be an easier way.  In fact, there is an easier way.  The **[binomial coefficient](http://en.wikipedia.org/wiki/Binomial_coefficient)**, or **[Pascal's triangle](http://en.wikipedia.org/wiki/Pascal%27s_triangle)**, provides an easy way to capture the number of possibilities:
+We *could* list out all the possibilities, but there has to be an easier way.  In fact, there is!  The **[binomial coefficient](http://en.wikipedia.org/wiki/Binomial_coefficient)**, or **[Pascal's triangle](http://en.wikipedia.org/wiki/Pascal%27s_triangle)**, provides an easy way to capture the number of possibilities:
 
 $$\binom{n}{k} = \frac{n!}{k! \times \left(n - k\right)}$$
 
@@ -235,7 +210,7 @@ Now, let's calculate the likelihood of any of those ways happening.  Since they 
 
 $$P_{HHHHTTTTTT} = \frac{1}{2}^{10} = 0.000977$$
 
-With 210 possibilities, since we know they are all *mutually exclusive*, we can add them all up.  And since they are all equally likely (i.e., the chance for $P_{HHHHTTTTTT}$ is the same as for $P_{TTHTTHHTTH}$), they will all have the same probability.
+With 210 possibilities, since we know they are all ***mutually exclusive***, we can add them all up.  And since they are all equally likely (i.e., the chance for $P_{HHHHTTTTTT}$ is the same as for $P_{TTHTTHHTTH}$), they will all have the same probability.
 
 So...
 
@@ -246,6 +221,8 @@ So...
 Or just over 20% chance of getting 4 heads out of 10 coin flips.
 
 -----
+
+### Pascal's Triangle
 
 Quick diversion, some fun with the **binomial coefficient**:  the binomial coefficient follows Pascal's Triangle.  For example, below is Pascal's Triangle going all the way from 0 - 10 different coin flips:
 
@@ -288,49 +265,28 @@ Let's think through this via the previous example, the chance of getting 4 heads
 
 So, if wanted to *randomly* experience that **calculated** probability, we would have to conduct **many** such trials to see the expected behavior.
 
-> Each 10 coin flip is only **one** experiment.
+> Each 10-coin-flip is only **one** experiment.
 
 In order to get a curve that we can play with like the above examples, we need to provide the following:
 
 - The probability of success (e.g., the chance of getting a "heads")
 - The number of times we repeat the event (e.g., the number of times we flip the coin)
 - The number of times we repeat the ***trial***.  This is the trickier concept:
-    - Like in the case above, each 10 coin flip was only ***one*** trial (or event).
+    - Like in the case above, each 10-coin-flip was only ***one*** trial (or event).
     - If we wanted to see the shape of the curve that represents the **expected** probabilities, we need to run many experiments.
     - This is just like the "normal" and "uniform" cases earlier.
-        - The "normal" did not have its bell curve shape until around 1000 or so events (days).
+        - The "normal" did not have its bell curve shape until around 1000 events (days).
         - Similarly, the "uniform" distribution needed many trials (die rolls).
 
-Below is an interactive graph showing all of these parameters to play around with:
+Below is an interactive graphic showing all of these parameters to play around with:
 
 
-```{r echo=FALSE}
-sliderInput("success", label = "Probability of (event) Success:",
-            min = 0, max = 1, value = 0.2, step = 0.02)
-
-selectInput("n_events", label = "Number of Events (per trial):",
-            choices = c(1:5, 10, 20, 30, 40, 50, 75, 100),
-            selected = 20)
-
-selectInput("n_trials", label = "Total Number of (repeated) Trials:",
-            choices = c(1:5, 10, 20, 50, 1e2, 1e3, 1e4, 1e5),
-            selected = 10)
-
-renderPlot({
-  ggplot(data.frame(Successes=rbinom(as.numeric(input$n_trials),
-                                    as.numeric(input$n_events),
-                                    as.numeric(input$success))),
-         aes(x = Successes)) +
-    geom_histogram(aes(y= ..density.., fill = ..count..),
-                   color = "darkgreen") +
-    labs(title = paste0("Number of Successes, given:\n",
-                        input$n_trials, " trials, ",
-                        input$n_events, " events per trial, and ",
-                        input$success, "% chance per event"),
-         y = "Measured Probability", x = "Number of Successes") + 
-    scale_fill_gradient(low="white", high="green") + 
-    theme(text = element_text(size = 21))
-})
+```{r binom, echo=FALSE}
+shinyAppFile("./Probability_2_binomial.R",
+  options = list(
+    width = "100%", height = 700
+  )
+)
 ```
 
 # Continuation...
