@@ -6,7 +6,12 @@ lapply(pacs_to_load, require, character.only = TRUE)
 ui <- fluidPage(
 
   # App title ----
-  titlePanel("Temperature in San Mateo (Example Normal Distribution)"),
+  # This was complex enough that I needed to create the HTML element
+  # "by hand".
+  title_tag <- tags$span("Binomial Distribution", tags$br(),
+                         "(Ex. number of heads with 10 coin flips, ",
+                         "repeated over & over)"),
+  titlePanel(title_tag),
 
   # Sidebar layout with input and output definitions ----
   sidebarLayout(
@@ -15,14 +20,14 @@ ui <- fluidPage(
     sidebarPanel(
 
       # Input: Slider for the number of observations to generate ----
-      sliderInput("success", label = "Probability of (event) Success:",
+      sliderInput("success", label = "Probability of Single Success:",
                   min = 0, max = 1, value = 0.2, step = 0.02),
 
-      selectInput("n_events", label = "Number of Events (per trial):",
+      selectInput("n_events", label = "Number of Events (per Trial):",
                   choices = c(1:5, 10, 20, 30, 40, 50, 75, 100),
                   selected = 20),
 
-      selectInput("n_trials", label = "Total Number of (repeated) Trials:",
+      selectInput("n_trials", label = "Total Number of (Repeated) Trials:",
                   choices = c(1:5, 10, 20, 50, 1e2, 1e3, 1e4, 1e5),
                   selected = 10)
     ),
@@ -69,8 +74,8 @@ server <- function(input, output) {
   # implied by the dependency graph.
   output$plot <- renderPlot({
     ggplot(dataset(), aes(x=Successes)) +
-      geom_histogram(aes(y= ..density.., fill = ..count..),
-                     color = "darkgreen") +
+      geom_histogram(aes(y= ..density.., fill = ..count..), binwidth = 1,
+                     color = "darkgreen", origin = -0.5) +
       labs(title = paste0("Number of Successes, given:\n",
                           input$n_trials, " trials, ",
                           input$n_events, " events per trial, and ",

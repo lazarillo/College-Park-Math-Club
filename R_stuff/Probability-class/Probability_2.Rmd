@@ -291,6 +291,5 @@ shinyAppFile("./Probability_2_binomial.R",
 
 # Continuation...
 
-Click here to see the next stuff...
-
+There is a part 3 continuing on with this work.
 

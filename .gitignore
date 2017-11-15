@@ -1,5 +1,5 @@
 # R package Cruft
-packrat/lib*/
+R_stuff/packrat/lib*/
 
 # Mac Cruft
 .DS_Store
